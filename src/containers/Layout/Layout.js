@@ -13,7 +13,7 @@ class Layout extends Component {
     render() {
         return (
             <Fragment>
-                <Toolbar />
+                <Toolbar drawerToggleClicked={this.toggleSideDrawerHandler}/>
                 <SideDrawer 
                     isOpened={this.state.showSideDrawer} 
                     closed={this.closeSideDrawerHandler}/>
@@ -26,7 +26,14 @@ class Layout extends Component {
 
     closeSideDrawerHandler = () => {
         this.setState({ showSideDrawer: false });
-    }
+    };
+
+    // Guarantee thread-safety
+    toggleSideDrawerHandler = () => {
+        this.setState((prevState) => { 
+            return { showSideDrawer: !prevState.showSideDrawer } 
+        });
+    };
 
 }
 
