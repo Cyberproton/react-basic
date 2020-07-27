@@ -121,12 +121,10 @@ class BurgerBuilder extends Component {
             .then(response => {
                 console.log(response);
                 this.setState({ loading: false, purchasing: false });
-                alert('Burger Ordered');
             })
             .catch(error => {
                 console.log(error);
                 this.setState({ loading: false, purchasing: false });
-                alert('Some error has happened!');
             });
     };
 
